@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const serverCopyControllers = require("../controllers/serverCopy.controllers");
+const serverCopyControllers = require("../controllers/serverCopy.controllers")
+
 
 router.route("/user/:email")
     .get(serverCopyControllers.getAServerCopyDataByEmailControllers)
