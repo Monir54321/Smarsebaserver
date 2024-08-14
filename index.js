@@ -11,24 +11,46 @@ app.use(express.json());
 
 // Connecting to the database
 mongoose.connect(process.env.DATABASE).then(() => {
-    console.log('Database connected successfully!'.green.bold);
+  console.log("Database connected successfully!".green.bold);
 });
 
 app.get("/", (req, res) => {
-    res.send("Hello world!");
+  res.send("Hello world!");
 });
 
-app.get('/api/nid', async (req, res) => {
-    const { nid, dob } = req.query;
-    try {
-      const fetch = (await import('node-fetch')).default;
-      const response = await fetch(`https://api.foxithub.com/unofficial/api.php?key=signCopy&nid=${nid}&dob=${dob}`);
-      const data = await response.json();
-      res.json(data);
-    } catch (error) {
-      res.status(500).json({ error: 'Failed to fetch data' });
-    }
-  });
+app.get("/api/nid", async (req, res) => {
+  const { nid, dob } = req.query;
+  console.log("nid and dob", nid, dob);
+  try {
+    // https://api.foxithub.com/unofficial/api.php?key=signCopy&nid=6911297726&dob=1999-10-21
+    const fetch = (await import("node-fetch")).default;
+    const response = await fetch(
+      `https://api.foxithub.com/unofficial/api.php?key=signCopy&nid=${nid}&dob=${dob}`
+    );
+    const data = await response.json();
+    console.log("data", data);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch data" });
+  }
+});
+
+app.get("/api/nid2", async (req, res) => {
+  const { nid, dob } = req.query;
+  console.log("nid and dob", nid, dob);
+  try {
+    // https://api.foxithub.com/unofficial/api.php?key=signCopy&nid=6911297726&dob=1999-10-21
+    const fetch = (await import("node-fetch")).default;
+    const response = await fetch(
+      `https://api.rafixt.xyz/server.php?nid=${nid}&dob=${dob}`
+    );
+    const data = await response.json();
+    console.log("data", data);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch data" });
+  }
+});
 
 const usersRoutes = require("./routes/users.routes");
 const bikashInfoOrdersRoutes = require("./routes/bikashInfoOrder.routes");
@@ -64,5 +86,4 @@ app.use("/saftyTikas", saftyTikaRoutes);
 app.use("/serverCopys", serverCopysRoutes);
 app.use("/nidMakes", nidMakeRoutes);
 
-app.listen(PORT, () =>  console.log(`Server started on port ${PORT}`));
-
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
