@@ -33,7 +33,7 @@ const nidMakeSchema = mongoose.Schema({
     },
     husbandWifeName: {
         type: String,
-        required: true,
+        required: false,
         trim: true
     },
     motherName: {

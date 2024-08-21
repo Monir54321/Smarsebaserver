@@ -70,13 +70,13 @@ app.get("/api/nid", async (req, res) => {
   try {
     // https://api.foxithub.com/unofficial/api.php?key=signCopy&nid=6911297726&dob=1999-10-21
     const fetch = (await import("node-fetch")).default;
-    // const response = await fetch(
-    //   `https://apiportal.gallego24.xyz/nid?ApiKey=RnVCTEpSYWtJSUw0QVdVM01YVFF4MGwxY0VkQlpqUXpjVkpFV0RoQlVFMUxObmM0Tm5jOVBRPT0=&nid=${nid}&dob=${dob}`
-    // );
-
     const response = await fetch(
-      `https://api.foxithub.com/unofficial/api.php?key=signCopy&nid=${nid}&dob=${dob}`
+      `https://apiportal.gallego24.xyz/nid?ApiKey=RnVCTEpSYWtJSUw0QVdVM01YVFF4MGwxY0VkQlpqUXpjVkpFV0RoQlVFMUxObmM0Tm5jOVBRPT0=&nid=${nid}&dob=${dob}`
     );
+
+    // const response = await fetch(
+    //   `https://api.foxithub.com/unofficial/api.php?key=signCopy&nid=${nid}&dob=${dob}`
+    // );
     const data = await response.json();
     console.log("data", data);
     res.json(data);
