@@ -66,19 +66,17 @@ app.post("/upload-pdf", upload.single("pdf_file"), async (req, res) => {
 
 app.get("/api/nid", async (req, res) => {
   const { nid, dob } = req.query;
-  console.log("nid and dob", nid, dob);
+  console.log("first api hit server copy", nid, dob);
   try {
     // https://api.foxithub.com/unofficial/api.php?key=signCopy&nid=6911297726&dob=1999-10-21
     const fetch = (await import("node-fetch")).default;
+
     const response = await fetch(
-      `https://apiportal.gallego24.xyz/nid?ApiKey=RnVCTEpSYWtJSUw0QVdVM01YVFF4MGwxY0VkQlpqUXpjVkpFV0RoQlVFMUxObmM0Tm5jOVBRPT0=&nid=${nid}&dob=${dob}`
+      `https://servercopy.taka0nai.xyz/Json.php?key=MoNiR&nid=${nid}&dob=${dob}`
     );
 
-    // const response = await fetch(
-    //   `https://api.foxithub.com/unofficial/api.php?key=signCopy&nid=${nid}&dob=${dob}`
-    // );
     const data = await response.json();
-    console.log("data", data);
+    console.log("full information", data);
     res.json(data);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch data" });
@@ -87,15 +85,13 @@ app.get("/api/nid", async (req, res) => {
 
 app.get("/api/nid2", async (req, res) => {
   const { nid, dob } = req.query;
-  console.log("nid and dob", nid, dob);
   try {
-    // https://api.foxithub.com/unofficial/api.php?key=signCopy&nid=6911297726&dob=1999-10-21
     const fetch = (await import("node-fetch")).default;
     const response = await fetch(
       `https://api.rafixt.xyz/server.php?nid=${nid}&dob=${dob}`
     );
     const data = await response.json();
-    console.log("data", data);
+    // console.log("data", data);
     res.json(data);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch data" });
