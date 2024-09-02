@@ -1,35 +1,41 @@
-const NidMake = require("../models/NidMake")
+const NidMake = require("../models/NidMake");
 
-exports.createNewNidMakeService = async(data) => {
-    const result = await NidMake.create(data);
-}
+exports.createNewNidMakeService = async (data) => {
+  const result = await NidMake.create(data);
+  console.log("result",result);
+  return result;
+};
 
-exports.getANidMakeService = async(id) => {
-    const result = await NidMake.findOne({_id: id});
-    
-    return result;
-}
+exports.getANidMakeService = async (id) => {
+  const result = await NidMake.findOne({ _id: id });
 
-exports.getAllNidMakeService = async() => {
-    const result = await NidMake.find({});
-    
-    return result;
-}
+  return result;
+};
 
-exports.getANidMakeDataByEmailService = async(email) => {
-    const result = await NidMake.find({email});
+exports.getAllNidMakeService = async () => {
+  const result = await NidMake.find({});
 
-    return result;
-}
+  return result;
+};
 
-exports.updateANidMakeService = async({_id, data}) => {
-    const result = await NidMake.updateOne({ _id }, { $set: { ...data } }, { upsert: true });
+exports.getANidMakeDataByEmailService = async (email) => {
+  const result = await NidMake.find({ email });
 
-    return result;
-}
+  return result;
+};
 
-exports.deleteANidMakeService = async(_id) => {
-    const result = await NidMake.deleteOne({_id});
+exports.updateANidMakeService = async ({ _id, data }) => {
+  const result = await NidMake.updateOne(
+    { _id },
+    { $set: { ...data } },
+    { upsert: true }
+  );
 
-    return result;
-}
+  return result;
+};
+
+exports.deleteANidMakeService = async (_id) => {
+  const result = await NidMake.deleteOne({ _id });
+
+  return result;
+};

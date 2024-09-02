@@ -33,6 +33,7 @@ const updateOne = async ({ _id, data }) => {
     throw new Error("Document with the provided ID does not exist.");
   }
 
+  console.log("data", data);
   // Update the document
   const result = await ManageOrderButton.updateOne(
     { _id },
