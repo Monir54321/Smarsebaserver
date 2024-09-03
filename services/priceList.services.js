@@ -23,16 +23,16 @@ exports.getAPriceListService = async (_id) => {
 // }
 
 exports.updatePriceListService = async ({ _id, data }) => {
-    // Manually map incoming fields to the database fields
-    const mappedData = {
-      [data?.title]: data?.nidAmount
-    };
-  
-    const result = await PriceList.updateOne(
-      { _id },
-      { $set: mappedData },
-      { upsert: true }
-    );
-    return result;
+  console.log("data.title", data.title);
+  const mappedData = {
+    [data?.title]: parseInt(data?.nidAmount),
   };
-  
+
+  const result = await PriceList.updateOne(
+    { _id },
+    { $set: mappedData },
+    { upsert: true }
+  );
+
+  return result;
+};
