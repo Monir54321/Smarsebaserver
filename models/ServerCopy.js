@@ -1,36 +1,35 @@
 const { default: mongoose } = require("mongoose");
 
-const serverCopySchema = mongoose.Schema({
+const serverCopySchema = mongoose.Schema(
+  {
     title: {
-        type: String,
-        trim: true,
-        required: true,
+      type: String,
+      trim: true,
     },
     nidNumber: {
-        type: String,
-        required: true,
-        trim: true
+      type: String,
+      trim: true,
     },
     dateOfBirth: {
-        type: String,
-        required: true,
-        trim: true
+      type: String,
+      trim: true,
     },
     status: {
-        type: String,
-        enum: ["Pending", "Processing","Canceled", "Success"],
-        default: "Pending"
+      type: String,
+      enum: ["Pending", "Processing", "Canceled", "Success"],
+      default: "Pending",
     },
     pdf: {
-        type: String
+      type: String,
     },
     email: {
-        type: String,
-        required: true
-    }
-}, {
-    timestamps: true
-});
+      type: String,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const ServerCopy = mongoose.model("ServerCopy", serverCopySchema);
 
