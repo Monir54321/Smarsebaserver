@@ -1,9 +1,38 @@
 const NidMake = require("../models/NidMake");
+const PriceList = require("../models/PriceList");
+const User = require("../models/User");
 
 exports.createNewNidMakeService = async (data) => {
-  const result = await NidMake.create(data);
-  console.log("result",result);
-  return result;
+  try {
+    const isExistUser = await User.findOne({ email: data?.email });
+
+    if (!isExistUser) {
+      throw new Error("User does not exist");
+    }
+
+    const priceList = await PriceList.find();
+    if (priceList.length === 0) {
+      throw new Error("Price list is empty");
+    }
+
+    const price = Number(priceList[0]?.nidMake);
+    const amount = isExistUser?.amount;
+
+    if (amount < price) {
+      throw new Error("Insufficient funds");
+    }
+
+    // const result = await NidMake.create(data);
+
+    await User.updateOne(
+      { email: data.email },
+      { $inc: { amount: -price } },
+      { new: true }
+    );
+  } catch (error) {
+    console.error("Error creating server copy:", error);
+    throw error; // Rethrow the error after logging it
+  }
 };
 
 exports.getANidMakeService = async (id) => {

@@ -33,7 +33,7 @@ const userSchema = mongoose.Schema({
         default: 'user'
     },
     amount: {
-        type: String,
+        type: Number,
         default: 0
     }
 }, {

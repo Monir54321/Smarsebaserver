@@ -98,6 +98,52 @@ app.get("/api/nid2", async (req, res) => {
   }
 });
 
+// api for reduce amount for auto nid
+app.post("/autoNid", async (req, res) => {
+  const data = req.body;
+
+  // Validate input
+  if (!data || !data.email) {
+    return res
+      .status(400)
+      .json({ error: "Invalid request: Email is required." });
+  }
+
+  try {
+    const isExistUser = await User.findOne({ email: data.email });
+
+    if (!isExistUser) {
+      return res.status(404).json({ error: "User does not exist." });
+    }
+
+    const priceList = await PriceList.find();
+    if (priceList.length === 0) {
+      return res.status(404).json({ error: "Price list is empty." });
+    }
+
+    const price = Number(priceList[0]?.autoNid);
+    if (isNaN(price)) {
+      return res.status(500).json({ error: "Price is not a valid number." });
+    }
+
+    const amount = isExistUser.amount;
+    if (amount < price) {
+      return res.status(400).json({ error: "Insufficient funds." });
+    }
+
+    await User.updateOne(
+      { email: data.email },
+      { $inc: { amount: -price } },
+      { new: true }
+    );
+
+    res.status(200).json({ message: "User amount updated successfully." });
+  } catch (error) {
+    console.error("Error creating auto nid:", error);
+    res.status(500).json({ error: "Internal server error." });
+  }
+});
+
 const usersRoutes = require("./routes/users.routes");
 const bikashInfoOrdersRoutes = require("./routes/bikashInfoOrder.routes");
 const orderNIdsRoutes = require("./routes/orderNId.routes");
@@ -116,6 +162,8 @@ const priceListRoutes = require("./routes/priceList.routes");
 const signCopyRoutes = require("./routes/signCopy.routes");
 const manageOrderButtonRoutes = require("./routes/manageOrderButton.routes");
 const { default: axios } = require("axios");
+const User = require("./models/User");
+const PriceList = require("./models/PriceList");
 
 app.use("/signCopy", signCopyRoutes);
 app.use("/priceList", priceListRoutes);

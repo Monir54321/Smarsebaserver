@@ -1,80 +1,84 @@
 const { default: mongoose } = require("mongoose");
 
-const priceListSchema = mongoose.Schema({
-
+const priceListSchema = mongoose.Schema(
+  {
     title: {
-        type: String,
+      type: String,
     },
     bikashInfo: {
-        type: String,
-        required: true
+      type: Number,
+      required: true,
     },
     nidOrder: {
-        type: String,
-        required: true
+      type: Number,
+      required: true,
     },
     bikashPinReset: {
-        type: String,
-        required: true
+      type: Number,
+      required: true,
     },
     callListOrder: {
-        type: String,
-        required: true
+      type: Number,
+      required: true,
     },
     birthCertificateFix: {
-        type: String,
-        required: true
+      type: Number,
+      required: true,
     },
     banglalinkBiometricOrder: {
-        type: String,
-        required: true
+      type: Number,
+      required: true,
     },
     grameenBiometricOrder: {
-        type: String,
-        required: true
+      type: Number,
+      required: true,
     },
     robiBiometricOrder: {
-        type: String,
-        required: true
+      type: Number,
+      required: true,
     },
     airtelBiometricOrder: {
-        type: String,
-        required: true
+      type: Number,
+      required: true,
     },
     teletalkBiometricOrder: {
-        type: String,
-        required: true
+      type: Number,
+      required: true,
     },
     nogodInfoOrder: {
-        type: String,
-        required: true
+      type: Number,
+      required: true,
     },
     onlineBirthCertificate: {
-        type: String,
-        required: true
+      type: Number,
+      required: true,
     },
     saftyTika: {
-        type: String,
-        required: true
+      type: Number,
+      required: true,
     },
     serverCopy: {
-        type: String,
-        required: true
+      type: Number,
+      required: true,
     },
     signCopy: {
-        type: String,
-        required: true
+      type: Number,
+      required: true,
     },
     nidMake: {
-        type: String,
-        required: true
+      type: Number,
+      required: true,
     },
-
-}, {
-    timestamps: true
-});
+    autoNid: {
+      type: Number,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const PriceList = mongoose.model("PriceList", priceListSchema);
 
 module.exports = PriceList;
-

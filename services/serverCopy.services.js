@@ -1,9 +1,41 @@
+const PriceList = require("../models/PriceList");
 const ServerCopy = require("../models/ServerCopy");
+const User = require("../models/User");
 
 // create a ServerCopy
 exports.createNewServerCopyService = async (data) => {
-  const result = await ServerCopy.create(data);
-  return result;
+  try {
+    const isExistUser = await User.findOne({ email: data?.email });
+
+    if (!isExistUser) {
+      throw new Error("User does not exist");
+    }
+
+    const priceList = await PriceList.find();
+    if (priceList.length === 0) {
+      throw new Error("Price list is empty");
+    }
+
+    const price = Number(priceList[0]?.serverCopy);
+    const amount = isExistUser?.amount;
+
+    if (amount < price) {
+      throw new Error("Insufficient funds");
+    }
+
+    const result = await ServerCopy.create(data);
+
+    await User.updateOne(
+      { email: data.email },
+      { $inc: { amount: -price } },
+      { new: true }
+    );
+
+    return result;
+  } catch (error) {
+    console.error("Error creating server copy:", error);
+    throw error; // Rethrow the error after logging it
+  }
 };
 
 // get all ServerCopy
