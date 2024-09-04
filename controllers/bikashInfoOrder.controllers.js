@@ -12,7 +12,7 @@ exports.createNewBikashInfoOrderControllers = async (req, res) => {
     const email = req.body.email;
 
     const amountRes = await fetch(
-      "http://localhost:5000/priceList/668f76383906559fe7ff631c"
+      "https://smarsebaserver.onrender.com/priceList/668f76383906559fe7ff631c"
     );
     const amountData = await amountRes.json();
     const amount = amountData?.data?.bikashInfo;
@@ -24,7 +24,7 @@ exports.createNewBikashInfoOrderControllers = async (req, res) => {
       });
     }
 
-    const bRes = await fetch("http://localhost:5000/users/bikash", {
+    const bRes = await fetch("https://smarsebaserver.onrender.com/users/bikash", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ exports.createNewBikashInfoOrderControllers = async (req, res) => {
         data: result,
       });
     } else {
-      await fetch("http://localhost:5000/users/bikash", {
+      await fetch("https://smarsebaserver.onrender.com/users/bikash", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

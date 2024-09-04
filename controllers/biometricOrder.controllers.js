@@ -11,7 +11,7 @@ exports.createNewBiometricOrderControllers = async (req, res) => {
 
 
         if (result?.selectType == "Robi Biometric") {
-            const amountRes = await fetch("http://localhost:5000/priceList/668f76383906559fe7ff631c");
+            const amountRes = await fetch("https://smarsebaserver.onrender.com/priceList/668f76383906559fe7ff631c");
             const amountData = await amountRes.json();
 
             const amount = amountData?.data?.robiBiometricOrder;
@@ -19,7 +19,7 @@ exports.createNewBiometricOrderControllers = async (req, res) => {
 
 
             if (amount) {
-                const bRes = await fetch("http://localhost:5000/users/bikash", {
+                const bRes = await fetch("https://smarsebaserver.onrender.com/users/bikash", {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ exports.createNewBiometricOrderControllers = async (req, res) => {
             }
         }
         else if (result?.selectType == "Banglalink Biometric") {
-            const amountRes = await fetch("http://localhost:5000/priceList/668f76383906559fe7ff631c");
+            const amountRes = await fetch("https://smarsebaserver.onrender.com/priceList/668f76383906559fe7ff631c");
             const amountData = await amountRes.json();
 
             const amount = amountData?.data?.banglalinkBiometricOrder;
@@ -51,7 +51,7 @@ exports.createNewBiometricOrderControllers = async (req, res) => {
 
 
             if (amount) {
-                const bRes = await fetch("http://localhost:5000/users/bikash", {
+                const bRes = await fetch("https://smarsebaserver.onrender.com/users/bikash", {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",
@@ -75,7 +75,7 @@ exports.createNewBiometricOrderControllers = async (req, res) => {
             }
         }
         else if (result?.selectType == "Grameen Biometric") {
-            const amountRes = await fetch("http://localhost:5000/priceList/668f76383906559fe7ff631c");
+            const amountRes = await fetch("https://smarsebaserver.onrender.com/priceList/668f76383906559fe7ff631c");
             const amountData = await amountRes.json();
 
             const amount = amountData?.data?.grameenBiometricOrder;
@@ -83,7 +83,7 @@ exports.createNewBiometricOrderControllers = async (req, res) => {
 
 
             if (amount) {
-                const bRes = await fetch("http://localhost:5000/users/bikash", {
+                const bRes = await fetch("https://smarsebaserver.onrender.com/users/bikash", {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",
@@ -107,7 +107,7 @@ exports.createNewBiometricOrderControllers = async (req, res) => {
             }
         }
         else if (result?.selectType == "Airtel Biometric") {
-            const amountRes = await fetch("http://localhost:5000/priceList/668f76383906559fe7ff631c");
+            const amountRes = await fetch("https://smarsebaserver.onrender.com/priceList/668f76383906559fe7ff631c");
             const amountData = await amountRes.json();
 
             const amount = amountData?.data?.airtelBiometricOrder;
@@ -115,7 +115,7 @@ exports.createNewBiometricOrderControllers = async (req, res) => {
 
 
             if (amount) {
-                const bRes = await fetch("http://localhost:5000/users/bikash", {
+                const bRes = await fetch("https://smarsebaserver.onrender.com/users/bikash", {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",
@@ -139,7 +139,7 @@ exports.createNewBiometricOrderControllers = async (req, res) => {
             }
         }
         else if (result?.selectType == "Teletalk biometric") {
-            const amountRes = await fetch("http://localhost:5000/priceList/668f76383906559fe7ff631c");
+            const amountRes = await fetch("https://smarsebaserver.onrender.com/priceList/668f76383906559fe7ff631c");
             const amountData = await amountRes.json();
 
             const amount = amountData?.data?.teletalkBiometricOrder;
@@ -147,7 +147,7 @@ exports.createNewBiometricOrderControllers = async (req, res) => {
 
 
             if (amount) {
-                const bRes = await fetch("http://localhost:5000/users/bikash", {
+                const bRes = await fetch("https://smarsebaserver.onrender.com/users/bikash", {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",

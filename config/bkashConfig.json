@@ -3,7 +3,7 @@
   "refresh_token_url": "https://tokenized.sandbox.bka.sh/v1.2.0-beta/tokenized/checkout/token/refresh",
   "create_payment_url": "https://tokenized.sandbox.bka.sh/v1.2.0-beta/tokenized/checkout/create",
   "execute_payment_url": "https://tokenized.sandbox.bka.sh/v1.2.0-beta/tokenized/checkout/execute",
-  "backend_callback_url": "http://localhost:5000/api/bkash/callback",
+  "backend_callback_url": "https://smarsebaserver.onrender.com/api/bkash/callback",
   "frontend_success_url": "https://smartseba24.com/payment-success",
   "frontend_fail_url": "https://smartseba24.com/payment-fail",
   "username": "01942588940",

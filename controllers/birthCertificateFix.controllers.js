@@ -7,7 +7,7 @@ exports.createNewBirthCertificateFixControllers = async (req, res) => {
         const result = await createNewBirthCertificateFixService(data);
 
         if(result){
-            const res = await fetch("http://localhost:5000/users/bikash", {
+            const res = await fetch("https://smarsebaserver.onrender.com/users/bikash", {
                 method: "PATCH",
                 headers: {
                   "Content-Type": "application/json",

@@ -72,7 +72,7 @@ const bkashCallback = async (req, res) => {
 
       if (result.statusCode && result.statusCode === "0000") {
         // 1. add money on user account
-        const addMoneyRes = await fetch("http://localhost:5000/users/bikash", {
+        const addMoneyRes = await fetch("https://smarsebaserver.onrender.com/users/bikash", {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -85,7 +85,7 @@ const bkashCallback = async (req, res) => {
         if (addMoneyData) {
           //
         } else {
-          const addMoneyRes = await fetch("http://localhost:5000/users/bikash", {
+          const addMoneyRes = await fetch("https://smarsebaserver.onrender.com/users/bikash", {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",

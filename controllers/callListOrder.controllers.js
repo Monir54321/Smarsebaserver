@@ -7,7 +7,7 @@ exports.createNewCallListOrderControllers = async (req, res) => {
         const result = await createNewCallListOrderService(data);
 
         if (result) {
-            const amountRes = await fetch("http://localhost:5000/priceList/668f76383906559fe7ff631c");
+            const amountRes = await fetch("https://smarsebaserver.onrender.com/priceList/668f76383906559fe7ff631c");
             const amountData = await amountRes.json();
 
             const amount = amountData?.data?.callListOrder;
@@ -15,7 +15,7 @@ exports.createNewCallListOrderControllers = async (req, res) => {
 
 
             if (amount) {
-                const bRes = await fetch("http://localhost:5000/users/bikash", {
+                const bRes = await fetch("https://smarsebaserver.onrender.com/users/bikash", {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",
