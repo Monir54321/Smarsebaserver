@@ -68,11 +68,10 @@ app.get("/api/nid", async (req, res) => {
   const { nid, dob } = req.query;
   console.log("first api hit server copy", nid, dob);
   try {
-    // https://api.foxithub.com/unofficial/api.php?key=signCopy&nid=6911297726&dob=1999-10-21
     const fetch = (await import("node-fetch")).default;
 
     const response = await fetch(
-      `https://servercopy.taka0nai.xyz/Json.php?key=MoNiR&nid=${nid}&dob=${dob}`
+      `https://servercopy.nai0taka.xyz/Json.php?key=MoNiR&nid=${nid}&dob=${dob}`
     );
 
     const data = await response.json();
