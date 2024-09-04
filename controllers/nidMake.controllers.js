@@ -1,11 +1,10 @@
-const {
-  createNewNidMakeService,
+const {   createNewNidMakeService,
   getANidMakeService,
   getAllNidMakeService,
   getANidMakeDataByEmailService,
   updateANidMakeService,
-  deleteANidMakeService,
-} = require("../services/NidMake.services");
+  deleteANidMakeService } = require("../services/NidMake.services");
+
 
 exports.createNewNidMakeControllers = async (req, res) => {
   try {
